@@ -1,4 +1,4 @@
-def count_upper(st):
+def count_upper(st: str) -> int:
     count = 0
     for c in st:
         if c.isupper():
@@ -8,3 +8,4 @@ def count_upper(st):
 
 
 print(count_upper('ABC'))
+#print(count_upper(1000))
