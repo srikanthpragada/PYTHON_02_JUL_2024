@@ -1,3 +1,16 @@
+class Queue_Iterator:
+    def __init__(self, data):
+        self.data = data
+        self.pos = 0
+
+    def __next__(self):
+        if self.pos == len(self.data):
+            raise StopIteration
+
+        self.pos += 1
+        return self.data[self.pos - 1]
+
+
 class Queue:
     def __init__(self):
         self.data = []
@@ -24,6 +37,8 @@ class Queue:
 
         return -1
 
+    def __iter__(self):
+        return Queue_Iterator(self.data)
 
 
 q = Queue()

@@ -1,3 +1,11 @@
+class InsufficientBalanceError(Exception):
+    def __init__(self, balance, amount):
+        self.balance = balance
+        self.amount  = amount
+
+    def __str__(self):
+        return f"Insufficient balance {self.balance} for withdraw of {self.amount} amount"
+
 class SavingsAccount:
     # static attribute
     minbal = 10000
@@ -19,7 +27,8 @@ class SavingsAccount:
         if self.__balance - SavingsAccount.minbal >= amount:
             self.__balance -= amount
         else:
-            print("Insufficient Balance!")
+            #raise ValueError("Insufficient Balance!")
+            raise InsufficientBalanceError(self.__balance - SavingsAccount.minbal, amount)
 
     @property
     def balance(self):
