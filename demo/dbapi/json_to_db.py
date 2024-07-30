@@ -12,6 +12,8 @@ cur = con.cursor()
 count = 0
 for emp in employees:
     try:
+        # check whether employee with same name and job is already existing
+
         cur.execute("insert into employees(fullname,job,salary) values(?,?,?)",
                     (emp['name'], emp['job'], emp['salary']))
         count += 1
